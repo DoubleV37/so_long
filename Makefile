@@ -6,17 +6,18 @@
 #    By: vviovi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 08:44:23 by vviovi            #+#    #+#              #
-#    Updated: 2022/11/17 11:06:24 by vviovi           ###   ########.fr        #
+#    Updated: 2022/11/18 18:06:51 by vviovi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 CC = clang
 
 NAME = so_long
 
-SRC = 	main.c
+SRC = 	main.c \
+		utils_map.c
 
 LIBFTFLAGS = -Llibft -lft
 
@@ -35,12 +36,14 @@ $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(LIBFTFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean :
+	@cd libft && make clean
 	@echo "╔════════════════╗"
 	@echo "║Cleaning so_long║"
 	@echo "╚════════════════╝"
 	@rm -f $(OBJ)
 
 fclean : clean
+	@cd libft && make fclean
 	rm -f $(NAME)
 
 re : fclean all
