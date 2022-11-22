@@ -6,7 +6,7 @@
 #    By: vviovi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 08:44:23 by vviovi            #+#    #+#              #
-#    Updated: 2022/11/18 10:41:33 by vviovi           ###   ########.fr        #
+#    Updated: 2022/11/21 10:45:16 by vviovi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,16 +67,16 @@ SRC =	ft_isalpha.c \
 OBJ = ${SRC:.c=.o}
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
-	ar rc $@ $^
+	@ar rc $@ $^
 
 clean :
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 

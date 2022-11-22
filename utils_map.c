@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:57:28 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/18 18:00:10 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/21 16:20:07 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,26 @@ size_t	len_line_map_isvalid(char **map)
 		return (0);
 	i = 1;
 	lenline = ft_strlen(map[0]);
-	while(map[i])
+	while (map[i])
 	{
 		if (ft_strlen(map[i]) != lenline)
 			return (0);
 		i++;
 	}
 	return (lenline);
+}
+
+void	free_map(char ***map)
+{
+	int	i;
+
+	i = 0;
+	while ((*map)[i])
+	{
+		free((*map)[i]);
+		i++;
+	}
+	free(*map);
 }
 
 int	setmap(char *mapwithnl, t_vars *vars)
@@ -61,11 +74,15 @@ int	setmap(char *mapwithnl, t_vars *vars)
 	size_t	lenline;
 
 	i = 0;
+	vars->map.map = NULL;
 	map = ft_split(mapwithnl, '\n');
 	free(mapwithnl);
 	lenline = len_line_map_isvalid(map);
 	if (lenline == 0)
+	{
+		free_map(&map);
 		return (0);
+	}
 	vars->map.map = map;
 	vars->map.size_x = lenline;
 	while(vars->map.map[i])
@@ -94,7 +111,11 @@ int	isvalid_map(t_vars *vars)
 			if ((y == 0 || y == vars->map.size_y - 1 || x == 0 || x == vars->map.size_x) && vars->map.map[y][x] != '1')
 				return(0);
 			else if (vars->map.map[y][x] == 'E')
+			{
+				vars->map.x_end = x;
+				vars->map.y_end = y;
 				nbend++;
+			}
 			else if (vars->map.map[y][x] == 'C')
 				nbcollect++;
 			else if (vars->map.map[y][x] == 'P')

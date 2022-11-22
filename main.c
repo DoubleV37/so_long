@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:30:55 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/18 18:06:12 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/22 12:31:49 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	destroy_map(t_vars *vars)
 	int	i;
 
 	i = 0;
-	while(vars->map.map[i])
+	if (!vars->map.map)
+		return ;
+	while (vars->map.map[i])
 	{
 		free(vars->map.map[i]);
 		i++;
@@ -30,7 +32,7 @@ void	destroy_assets(t_vars *vars)
 	int	i;
 
 	i = 0;
-	while(vars->assets[i])
+	while (vars->assets[i])
 	{
 		mlx_destroy_image(vars->mlx, vars->assets[i]);
 		i++;
@@ -54,7 +56,7 @@ char	searchpos(t_vars *vars, size_t pos_x, size_t pos_y)
 	size_t	y;
 
 	y = 0;
-	while(vars->map.map[y])
+	while (vars->map.map[y])
 	{
 		x = 0;
 		while (vars->map.map[y][x])
@@ -66,6 +68,58 @@ char	searchpos(t_vars *vars, size_t pos_x, size_t pos_y)
 		y++;
 	}
 	return ('\0');
+}
+
+char	*get_nbmov(t_vars *vars)
+{
+	char	*linenbmov;
+	char	*nbmov;
+
+	nbmov = ft_itoa(vars->nbhit);
+	linenbmov = ft_strjoin("Number of movement : ", nbmov);
+	free(nbmov);
+	return (linenbmov);
+}
+
+void	modifmap(t_vars *vars, size_t pos_x, size_t pos_y, char typeimg)
+{
+	vars->map.map[pos_y][pos_x] = typeimg;
+}
+
+void endgame(t_vars *vars)
+{
+	close_window(vars);
+}
+
+void	specialcase(t_vars *vars, size_t next_x, size_t next_y)
+{
+	char	*nbmov;
+
+	nbmov = get_nbmov(vars);
+	mlx_string_put(vars->mlx, vars->win, 5, 16, 0x00000000, nbmov);
+	free(nbmov);
+	vars->nbhit++;
+	nbmov = get_nbmov(vars);
+	mlx_string_put(vars->mlx, vars->win, 5, 16, 0x00ff0000, nbmov);
+	free(nbmov);
+	if (vars->map.x_end == vars->map.x_player && vars->map.y_end == vars->map.y_player)
+	{
+		if (vars->map.nbcollec == vars->nbcollget)
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[7], vars->map.x_end * 32, vars->map.y_end * 32 + 32);
+		else
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[8], vars->map.x_end * 32, vars->map.y_end * 32 + 32);
+	}
+	if (searchpos(vars, next_x, next_y) == 'C')
+	{
+		modifmap(vars, next_x, next_y, '0');
+		vars->nbcollget++;
+	}
+	if (vars->map.nbcollec == vars->nbcollget)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[7], vars->map.x_end * 32, vars->map.y_end * 32 + 32);
+		if (vars->map.x_end == next_x && vars->map.y_end == next_y)
+			endgame(vars);
+	}
 }
 
 void	moveplayer_up(t_vars *vars)
@@ -83,9 +137,9 @@ void	moveplayer_up(t_vars *vars)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[0], pos_x * 32, pos_y * 32 + 32);
 		pos_y--;
+		specialcase(vars, pos_x, pos_y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[3], pos_x * 32, pos_y * 32 + 32);
 		vars->map.y_player = pos_y;
-		vars->nbhit++;
 		ft_printf("Number of movement : %i\n",vars->nbhit);
 	}
 }
@@ -105,9 +159,9 @@ void	moveplayer_down(t_vars *vars)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[0], pos_x * 32, pos_y * 32 + 32);
 		pos_y++;
+		specialcase(vars, pos_x, pos_y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[4], pos_x * 32, pos_y * 32 + 32);
 		vars->map.y_player = pos_y;
-		vars->nbhit++;
 		ft_printf("Number of movement : %i\n",vars->nbhit);
 	}
 }
@@ -125,11 +179,12 @@ void	moveplayer_left(t_vars *vars)
 		return ;
 	else
 	{
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[0], pos_x * 32, pos_y * 32 + 32);
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->assets[0], pos_x * 32, pos_y * 32 + 32);
 		pos_x--;
+		specialcase(vars, pos_x, pos_y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[5], pos_x * 32, pos_y * 32 + 32);
 		vars->map.x_player = pos_x;
-		vars->nbhit++;
 		ft_printf("Number of movement : %i\n",vars->nbhit);
 	}
 }
@@ -149,9 +204,9 @@ void	moveplayer_right(t_vars *vars)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[0], pos_x * 32, pos_y * 32 + 32);
 		pos_x++;
+		specialcase(vars, pos_x, pos_y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[6], pos_x * 32, pos_y * 32 + 32);
 		vars->map.x_player = pos_x;
-		vars->nbhit++;
 		ft_printf("Number of movement : %i\n",vars->nbhit);
 	}
 }
@@ -160,13 +215,13 @@ int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == XK_Escape)
 		close_window(vars);
-	else if (keycode == XK_w)
+	else if (keycode == XK_w || keycode == XK_Up)
 		moveplayer_up(vars);
-	else if (keycode == XK_s)
+	else if (keycode == XK_s || keycode == XK_Down)
 		moveplayer_down(vars);
-	else if (keycode == XK_a)
+	else if (keycode == XK_a || keycode == XK_Left)
 		moveplayer_left(vars);
-	else if (keycode == XK_d)
+	else if (keycode == XK_d || keycode == XK_Right)
 		moveplayer_right(vars);
 	return(0);
 }
@@ -213,13 +268,18 @@ int	main(int argc, char **argv)
 	if (setmap(brutmap, &vars) == 0 || isvalid_map(&vars) == 0)
 	{
 		destroy_map(&vars);
+
 		ft_printf("Error\nThe map isn't correct !");
 		return (0);
 	}
 	vars.nbhit = 0;
+	vars.nbcollget = 0;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, (vars.map.size_x * 32), (vars.map.size_y * 32 + 32), "Star Citizen 1.0");
 	set_assets(&vars);
+	char *nbmov = get_nbmov(&vars);
+	mlx_string_put(vars.mlx, vars.win, 5, 16, 0x00ff0000, nbmov);
+	free(nbmov);
 	mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
 	mlx_hook(vars.win, 17, StructureNotifyMask, close_window, &vars);
 	buildstart(&vars);
