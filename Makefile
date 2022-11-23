@@ -6,7 +6,7 @@
 #    By: vviovi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 08:44:23 by vviovi            #+#    #+#              #
-#    Updated: 2022/11/21 10:44:43 by vviovi           ###   ########.fr        #
+#    Updated: 2022/11/23 10:38:58 by vviovi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CC = clang
 
 NAME = so_long
 
-SRC = 	main.c \
-		utils_map.c
+SRC = 	mandatory/main.c \
+		mandatory/utils_map.c \
+		mandatory/map_verif.c
 
 LIBFTFLAGS = -Llibft -lft
 
