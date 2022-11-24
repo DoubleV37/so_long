@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:21:41 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:02:19 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/24 17:05:29 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	moveplayer_up(t_vars *vars)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->assets[3], pos_x * 32, pos_y * 32 + 32);
 		vars->map.y_player = pos_y;
-		ft_printf("Number of movement : %i\n", vars->nbhit);
 	}
 }
 
@@ -82,7 +81,6 @@ void	moveplayer_down(t_vars *vars)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->assets[4], pos_x * 32, pos_y * 32 + 32);
 		vars->map.y_player = pos_y;
-		ft_printf("Number of movement : %i\n", vars->nbhit);
 	}
 }
 
@@ -106,7 +104,6 @@ void	moveplayer_left(t_vars *vars)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->assets[5], pos_x * 32, pos_y * 32 + 32);
 		vars->map.x_player = pos_x;
-		ft_printf("Number of movement : %i\n", vars->nbhit);
 	}
 }
 
@@ -130,6 +127,5 @@ void	moveplayer_right(t_vars *vars)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->assets[6], pos_x * 32, pos_y * 32 + 32);
 		vars->map.x_player = pos_x;
-		ft_printf("Number of movement : %i\n", vars->nbhit);
 	}
 }
