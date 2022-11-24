@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 13:28:32 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/24 13:14:32 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	moveplayer_left(t_vars *vars);
 void	moveplayer_right(t_vars *vars);
 
 char	searchpos(t_vars *vars, size_t pos_x, size_t pos_y);
+char	*get_nbmov(t_vars *vars);
 
 void	set_assets(t_vars *vars);
 void	load_end(void **assets, t_vars *vars, int size);

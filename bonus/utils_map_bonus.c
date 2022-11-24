@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_map.c                                        :+:      :+:    :+:   */
+/*   utils_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:57:28 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 13:34:42 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/24 14:02:26 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	isber(char	*path)
 {
@@ -79,10 +79,10 @@ void	ctrl_end(t_vars *vars)
 	{
 		if (vars->map.nbcollec == vars->nbcollget)
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[7],
-				vars->map.x_end * 32, vars->map.y_end * 32);
+				vars->map.x_end * 32, vars->map.y_end * 32 + 32);
 		else
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->assets[8],
-				vars->map.x_end * 32, vars->map.y_end * 32);
+				vars->map.x_end * 32, vars->map.y_end * 32 + 32);
 	}
 }
 
