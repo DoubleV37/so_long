@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 13:14:32 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:08:08 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "mlx_linux/mlx.h"
 # include "mlx_linux/mlx_int.h"
@@ -36,6 +36,8 @@ typedef struct s_vars
 	void	*win;
 	int		nbhit;
 	int		nbcollget;
+	int		nbturn;
+	int		nbwalltyp;
 	t_map	map;
 	void	**assets;
 }	t_vars;
@@ -80,5 +82,7 @@ void	init_vars_and_win(t_vars *vars);
 void	put_image_win(t_vars *vars, size_t x, size_t y);
 
 void	modifmap(t_vars *vars, size_t pos_x, size_t pos_y, char typeimg);
+
+int	animation_wall(t_vars *vars);
 
 #endif

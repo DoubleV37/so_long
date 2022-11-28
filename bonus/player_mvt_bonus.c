@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:21:41 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 17:05:29 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:25:06 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	specialcase(t_vars *vars, size_t next_x, size_t next_y)
 	mlx_string_put(vars->mlx, vars->win, 5, 16, 0x00ff0000, nbmov);
 	free(nbmov);
 	ctrl_end(vars);
+	if (searchpos(vars, next_x, next_y) == 'A')
+	{
+		endgame(vars);
+	}
 	if (searchpos(vars, next_x, next_y) == 'C')
 	{
 		modifmap(vars, next_x, next_y, '0');

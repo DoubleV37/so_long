@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:50:35 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:02:33 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:16:16 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,36 @@ int	key_hook(int keycode, t_vars *vars)
 
 void	put_image_win(t_vars *vars, size_t x, size_t y)
 {
+	void	*asset;
+
 	if (vars->map.map[y][x] == '0')
-		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->assets[0], x * 32, y * 32 + 32);
+		asset = vars->assets[0];
 	else if (vars->map.map[y][x] == 'E')
-		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->assets[8], x * 32, y * 32 + 32);
+		asset = vars->assets[8];
 	else if (vars->map.map[y][x] == 'P')
-		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->assets[3], x * 32, y * 32 + 32);
+		asset = vars->assets[3];
 	else if (vars->map.map[y][x] == 'C')
-		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->assets[9], x * 32, y * 32 + 32);
+		asset = vars->assets[9];
+	else if (vars->map.map[y][x] == 'A')
+		asset = vars->assets[18];
 	else
 	{
 		if (x % 2 == 0)
-			mlx_put_image_to_window(vars->mlx, vars->win,
-				vars->assets[1], x * 32, y * 32 + 32);
+			asset = vars->assets[1];
+		else if (y % 2 == 0)
+			asset = vars->assets[2];
 		else
-			mlx_put_image_to_window(vars->mlx, vars->win,
-				vars->assets[2], x * 32, y * 32 + 32);
+			asset = vars->assets[10];
 	}
+	mlx_put_image_to_window(vars->mlx, vars->win,
+		asset, x * 32, y * 32 + 32);
 }
 
 void	buildstart(t_vars *vars)
 {
 	size_t	y;
 	size_t	x;
+
 
 	y = 0;
 	while (vars->map.map[y] && y < vars->map.size_y)

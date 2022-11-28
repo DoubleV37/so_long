@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:30:55 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:02:07 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/28 15:35:07 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	main(int argc, char **argv)
 	if (!error_traitment(argc, argv, &vars))
 		exit (0);
 	init_vars_and_win(&vars);
+	vars.nbturn = 42;
 	buildstart(&vars);
+	mlx_loop_hook(vars.mlx, (*animation_wall), &vars);
 	mlx_loop(vars.mlx);
 }
