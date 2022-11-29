@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/29 15:26:21 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:29:07 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	put_image_win(t_vars *vars, size_t x, size_t y);
 
 void	modifmap(t_vars *vars, size_t pos_x, size_t pos_y, char typeimg);
 
-int		animation_wall(t_vars *vars);
 void	putimage_anim(t_vars *vars, size_t y);
 int		animation(t_vars *vars);
 

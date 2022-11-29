@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 09:07:33 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/29 14:56:56 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:28:49 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	putimage_anim(t_vars *vars, size_t y)
 	}
 }
 
-int	animation_wall(t_vars *vars)
+int	animation(t_vars *vars)
 {
 	size_t	y;
 
@@ -49,11 +49,5 @@ int	animation_wall(t_vars *vars)
 	}
 	else
 		vars->nbturn++;
-	return (0);
-}
-
-int	animation(t_vars *vars)
-{
-	animation_wall(vars);
 	return (0);
 }
