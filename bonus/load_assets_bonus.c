@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:57:43 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/28 17:17:11 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:16:52 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,24 @@ void	load_end(void **assets, t_vars *vars, int size)
 		(vars->mlx, "assets/end_off.xpm", &size, &size);
 }
 
+void	load_ennemy(void **assets, t_vars *vars, int size)
+{
+	assets[18] = mlx_xpm_file_to_image
+		(vars->mlx, "assets/ennemy_up.xpm", &size, &size);
+	assets[19] = mlx_xpm_file_to_image
+		(vars->mlx, "assets/ennemy_down.xpm", &size, &size);
+	assets[20] = mlx_xpm_file_to_image
+		(vars->mlx, "assets/ennemy_left.xpm", &size, &size);
+	assets[21] = mlx_xpm_file_to_image
+		(vars->mlx, "assets/ennemy_right.xpm", &size, &size);
+}
+
 void	set_assets(t_vars *vars)
 {
 	void	**assets;
 	int		size;
 
-	assets = malloc(sizeof(void *) * 20);
+	assets = malloc(sizeof(void *) * 23);
 	if (!assets)
 		return ;
 	size = 32;
@@ -70,12 +82,11 @@ void	set_assets(t_vars *vars)
 		(vars->mlx, "assets/background.xpm", &size, &size);
 	assets[9] = mlx_xpm_file_to_image
 		(vars->mlx, "assets/collectible.xpm", &size, &size);
-	assets[18] = mlx_xpm_file_to_image
-		(vars->mlx, "assets/ennemi.xpm", &size, &size);
 	load_wall(assets, vars, size);
 	load_player(assets, vars, size);
 	load_end(assets, vars, size);
-	assets[19] = NULL;
+	load_ennemy(assets, vars, size);
+	assets[22] = NULL;
 	vars->assets = assets;
 	vars->nbturn = 0;
 }

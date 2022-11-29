@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/28 17:08:08 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:26:21 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "mlx_linux/mlx.h"
 # include "mlx_linux/mlx_int.h"
-# include "fcntl.h"
+# include <fcntl.h>
+# include <time.h>
 # include "libft.h"
 
 typedef struct s_map
@@ -69,13 +70,15 @@ void	moveplayer_right(t_vars *vars);
 
 char	searchpos(t_vars *vars, size_t pos_x, size_t pos_y);
 char	*get_nbmov(t_vars *vars);
+void	place_rightend(t_vars *vars, size_t x, size_t y);
 
 void	set_assets(t_vars *vars);
 void	load_end(void **assets, t_vars *vars, int size);
 void	load_player(void **assets, t_vars *vars, int size);
 void	load_wall(void **assets, t_vars *vars, int size);
+void	load_ennemy(void **assets, t_vars *vars, int size);
 
-void	endgame(t_vars *vars);
+void	endgame(t_vars *vars, int endtype);
 int		key_hook(int keycode, t_vars *vars);
 void	buildstart(t_vars *vars);
 void	init_vars_and_win(t_vars *vars);
@@ -83,6 +86,14 @@ void	put_image_win(t_vars *vars, size_t x, size_t y);
 
 void	modifmap(t_vars *vars, size_t pos_x, size_t pos_y, char typeimg);
 
-int	animation_wall(t_vars *vars);
+int		animation_wall(t_vars *vars);
+void	putimage_anim(t_vars *vars, size_t y);
+int		animation(t_vars *vars);
+
+void	moveennemy_up(t_vars *vars, size_t pos_x, size_t pos_y);
+void	moveennemy_down(t_vars *vars, size_t pos_x, size_t pos_y);
+void	moveennemy_left(t_vars *vars, size_t pos_x, size_t pos_y);
+void	moveennemy_right(t_vars *vars, size_t pos_x, size_t pos_y);
+void	move_ennemy(t_vars *vars, size_t x, size_t y);
 
 #endif

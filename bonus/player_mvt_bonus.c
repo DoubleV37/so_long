@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:21:41 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/28 17:25:06 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:24:06 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void	specialcase(t_vars *vars, size_t next_x, size_t next_y)
 	free(nbmov);
 	ctrl_end(vars);
 	if (searchpos(vars, next_x, next_y) == 'A')
-	{
-		endgame(vars);
-	}
+		endgame(vars, 0);
 	if (searchpos(vars, next_x, next_y) == 'C')
 	{
 		modifmap(vars, next_x, next_y, '0');
@@ -38,7 +36,7 @@ void	specialcase(t_vars *vars, size_t next_x, size_t next_y)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->assets[7], vars->map.x_end * 32, vars->map.y_end * 32 + 32);
 		if (vars->map.x_end == next_x && vars->map.y_end == next_y)
-			endgame(vars);
+			endgame(vars, 1);
 	}
 }
 

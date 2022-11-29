@@ -6,14 +6,18 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:50:35 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/28 17:16:16 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:25:55 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	endgame(t_vars *vars)
+void	endgame(t_vars *vars, int endtype)
 {
+	if (endtype == 0)
+		ft_printf("You died, try again !");
+	else if (endtype == 1)
+		ft_printf("Success ! GG guy !");
 	close_window(vars);
 }
 
@@ -63,7 +67,6 @@ void	buildstart(t_vars *vars)
 {
 	size_t	y;
 	size_t	x;
-
 
 	y = 0;
 	while (vars->map.map[y] && y < vars->map.size_y)

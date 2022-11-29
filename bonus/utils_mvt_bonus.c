@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:52:48 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:02:29 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:17:02 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,14 @@ char	*get_nbmov(t_vars *vars)
 	linenbmov = ft_strjoin("Number of movement : ", nbmov);
 	free(nbmov);
 	return (linenbmov);
+}
+
+void	place_rightend(t_vars *vars, size_t x, size_t y)
+{
+	if (vars->nbcollget == vars->map.nbcollec)
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->assets[7], x * 32, y * 32 + 32);
+	else
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->assets[8], x * 32, y * 32 + 32);
 }
