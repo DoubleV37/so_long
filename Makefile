@@ -6,7 +6,7 @@
 #    By: vviovi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 08:44:23 by vviovi            #+#    #+#              #
-#    Updated: 2022/11/28 09:08:19 by vviovi           ###   ########.fr        #
+#    Updated: 2022/11/29 14:20:53 by vviovi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC_BONUS = 	bonus/main_bonus.c \
 				bonus/utils_mvt_bonus.c \
 				bonus/utils_win_bonus.c \
 				bonus/map_solv_bonus.c \
-				bonus/animation_bonus.c
+				bonus/animation_bonus.c \
+				bonus/ennemy_mvt_bonus.c
 
 LIBFTFLAGS = -Llibft -lft
 

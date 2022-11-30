@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:20:14 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:02:12 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:47:23 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,43 @@ static void	maptest_gen(t_map *maptest, size_t x, size_t y)
 		if (maptest->map[y][x + 1] && maptest->map[y][x + 1] != '1')
 			maptest->map[y][x + 1] = 'V';
 	}
+}
+
+int	is_ennemy(t_map *map)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (map->map[y])
+	{
+		x = 0;
+		while (map->map[y][x])
+		{
+			if (map->map[y][x] == 'A')
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	is_corridor_imp(t_map *map)
+{
+	if (map->size_x == 3)
+	{
+		if (map->map[1][1] == 'E' || map->map[map->size_y - 2][1] == 'E')
+			if (is_ennemy(map))
+				return (1);
+	}
+	else if (map->size_y == 3)
+	{
+		if (map->map[1][1] == 'E' || map->map[1][map->size_x - 2] == 'E')
+			if (is_ennemy(map))
+				return (1);
+	}
+	return (0);
 }
 
 static int	is_validmap(t_map *maptest)

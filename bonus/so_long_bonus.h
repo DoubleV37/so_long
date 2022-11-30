@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/29 15:29:07 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:40:08 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		setmap(char *mapwithnl, t_vars *vars);
 int		isber(char	*path);
 void	ctrl_end(t_vars *vars);
 int		cpt_contentmap(t_vars *vars, int *nbstart, int *nbend, size_t *y);
+
+int		is_corridor_imp(t_map *map);
 
 int		isvalid_map(t_vars *vars);
 void	duplmap(t_map *dest, t_map *src);

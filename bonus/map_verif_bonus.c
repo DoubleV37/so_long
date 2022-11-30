@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:38:23 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 14:02:15 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:40:49 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	isvalid_map(t_vars *vars)
 		y++;
 	}
 	if (nbstart != 1 || nbend != 1 || vars->map.nbcollec == 0
-		|| !is_solvable(&vars->map))
+		|| !is_solvable(&vars->map) || is_corridor_imp(&vars->map))
 		return (0);
 	return (1);
 }

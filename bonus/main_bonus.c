@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:30:55 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/29 14:23:04 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:22:54 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ int	error_traitment(int argc, char **argv, t_vars *vars)
 
 	if (argc != 2)
 	{
-		ft_printf("Error\nMissing map in argv !");
+		ft_printf("Error\nMissing map in argv !\n");
 		return (0);
 	}
 	brutmap = open_file(argv[1]);
 	if (brutmap == NULL)
 	{
-		ft_printf("Error\nCan't open the map !");
+		ft_printf("Error\nCan't open the map !\n");
 		return (0);
 	}
 	if (setmap(brutmap, vars) == 0 || isvalid_map(vars) == 0)
 	{
 		destroy_map(vars);
-		ft_printf("Error\nThe map isn't correct !");
+		ft_printf("Error\nThe map isn't correct !\n");
 		return (0);
 	}
 	return (1);

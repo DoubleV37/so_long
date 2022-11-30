@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:50:35 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/29 15:25:55 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:23:28 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	endgame(t_vars *vars, int endtype)
 {
 	if (endtype == 0)
-		ft_printf("You died, try again !");
+		ft_printf("You died, try again !\n");
 	else if (endtype == 1)
-		ft_printf("Success ! GG guy !");
+		ft_printf("Success ! GG guy !\n");
 	close_window(vars);
 }
 
