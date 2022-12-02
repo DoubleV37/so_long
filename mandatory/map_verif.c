@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:38:23 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 13:13:43 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:48:57 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ int	isvalid_map(t_vars *vars)
 	vars->map.nbcollec = 0;
 	while (vars->map.map[y])
 	{
-		cpt_contentmap(vars, &nbstart, &nbend, &y);
+		if (!cpt_contentmap(vars, &nbstart, &nbend, &y))
+			return (0);
 		y++;
 	}
 	if (nbstart != 1 || nbend != 1 || vars->map.nbcollec == 0

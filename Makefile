@@ -6,7 +6,7 @@
 #    By: vviovi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 08:44:23 by vviovi            #+#    #+#              #
-#    Updated: 2022/11/29 14:20:53 by vviovi           ###   ########.fr        #
+#    Updated: 2022/12/02 10:56:56 by vviovi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ NAME = so_long
 
 SRC = 	mandatory/main.c \
 		mandatory/utils_map.c \
+		mandatory/utils_2_map.c \
 		mandatory/map_verif.c \
 		mandatory/clean_solong.c \
 		mandatory/load_assets.c \
@@ -28,6 +29,7 @@ SRC = 	mandatory/main.c \
 
 SRC_BONUS = 	bonus/main_bonus.c \
 				bonus/utils_map_bonus.c \
+				bonus/utils_2_map_bonus.c \
 				bonus/map_verif_bonus.c \
 				bonus/clean_solong_bonus.c \
 				bonus/load_assets_bonus.c \

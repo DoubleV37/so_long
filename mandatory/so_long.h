@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 13:28:32 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:55:16 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "mlx_linux/mlx.h"
 # include "mlx_linux/mlx_int.h"
-# include "fcntl.h"
+# include <fcntl.h>
 # include "libft.h"
 
 typedef struct s_map
@@ -79,5 +79,7 @@ void	init_vars_and_win(t_vars *vars);
 void	put_image_win(t_vars *vars, size_t x, size_t y);
 
 void	modifmap(t_vars *vars, size_t pos_x, size_t pos_y, char typeimg);
+
+int		is_invalid_contentmap(t_vars *vars, size_t x, size_t *y);
 
 #endif

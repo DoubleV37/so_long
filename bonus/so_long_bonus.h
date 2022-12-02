@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:53:08 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/30 14:40:08 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:55:26 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,7 @@ void	moveennemy_down(t_vars *vars, size_t pos_x, size_t pos_y);
 void	moveennemy_left(t_vars *vars, size_t pos_x, size_t pos_y);
 void	moveennemy_right(t_vars *vars, size_t pos_x, size_t pos_y);
 void	move_ennemy(t_vars *vars, size_t x, size_t y);
+
+int		is_invalid_contentmap(t_vars *vars, size_t x, size_t *y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vviovi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:57:28 by vviovi            #+#    #+#             */
-/*   Updated: 2022/11/24 13:34:42 by vviovi           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:57:30 by vviovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,7 @@ int	cpt_contentmap(t_vars *vars, int *nbstart, int *nbend, size_t *y)
 	x = 0;
 	while (vars->map.map[*y][x])
 	{
-		if ((*y == 0 || *y == vars->map.size_y - 1 || x == 0
-				|| x == vars->map.size_x) && vars->map.map[*y][x] != '1')
+		if (is_invalid_contentmap(vars, x, y))
 			return (0);
 		else if (vars->map.map[*y][x] == 'E')
 		{
